@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BlogList from '../components/Blog/BlogList';
 import BlogForm from '../components/Blog/BlogForm';
 import useAuthStore from '../store/authStore';
@@ -40,6 +40,14 @@ const Home = () => {
       }
     }, 100);
   };
+
+  // Reset form states when user logs out
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setShowCreateForm(false);
+      setEditingBlog(null);
+    }
+  }, [isAuthenticated]);
 
   return (
     <div className="min-h-screen">
