@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../../store/authStore';
+import { getImageUrl } from '../../utils/imageHelper';
 
 const BlogCard = ({ blog, onEdit, onDelete }) => {
   const { user } = useAuthStore();
@@ -41,7 +42,7 @@ const BlogCard = ({ blog, onEdit, onDelete }) => {
       {blog.image && (
         <div className="w-full h-48 overflow-hidden">
           <img
-            src={`http://localhost:5000${blog.image}`}
+            src={getImageUrl(blog.image)}
             alt={blog.title}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />

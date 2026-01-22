@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import useApi from '../../hooks/useApi';
+import { getImageUrl } from '../../utils/imageHelper';
 
 const BlogForm = ({ blog, onSuccess, onCancel }) => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const BlogForm = ({ blog, onSuccess, onCancel }) => {
       });
       // Set existing image preview if editing
       if (blog.image) {
-        setImagePreview(`http://localhost:5000${blog.image}`);
+        setImagePreview(getImageUrl(blog.image));
       }
     }
   }, [blog]);

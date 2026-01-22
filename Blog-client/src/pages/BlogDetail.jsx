@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import useApi from '../hooks/useApi';
 import useAuthStore from '../store/authStore';
+import { getImageUrl } from '../utils/imageHelper';
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -123,7 +124,7 @@ const BlogDetail = () => {
           {blog.image && (
             <div className="mb-6">
               <img
-                src={`http://localhost:5000${blog.image}`}
+                src={getImageUrl(blog.image)}
                 alt={blog.title}
                 className="w-full max-h-96 object-cover rounded-lg border border-border"
               />
