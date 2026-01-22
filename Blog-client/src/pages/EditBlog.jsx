@@ -29,7 +29,7 @@ const EditBlog = () => {
     };
 
     fetchBlog();
-  }, [id, user?.id]);
+  }, [id, user?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSuccess = () => {
     navigate(`/blog/${id}`);

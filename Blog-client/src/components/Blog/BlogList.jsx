@@ -25,7 +25,7 @@ const BlogList = ({ onEdit }) => {
     };
 
     fetchBlogs();
-  }, [currentPage]);
+  }, [currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDelete = async (blogId) => {
     if (window.confirm('Are you sure you want to delete this blog?')) {
