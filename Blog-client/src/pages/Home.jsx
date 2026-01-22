@@ -27,6 +27,20 @@ const Home = () => {
     setShowCreateForm(false);
   };
 
+  const handleWriteStoryClick = () => {
+    setShowCreateForm(true);
+    // Scroll to the form section after a short delay to ensure it's rendered
+    setTimeout(() => {
+      const formSection = document.getElementById('blog-form-section');
+      if (formSection) {
+        formSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -76,7 +90,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {isAuthenticated && !editingBlog && !showCreateForm && (
                 <button
-                  onClick={() => setShowCreateForm(true)}
+                  onClick={handleWriteStoryClick}
                   className="group bg-accent text-text-inverse px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent-hover transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <span className="flex items-center gap-2">
@@ -101,7 +115,7 @@ const Home = () => {
 
       {/* Blog Form Section */}
       {(showCreateForm || editingBlog) && (
-        <div className="bg-surface py-16">
+        <div id="blog-form-section" className="bg-surface py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-text-primary mb-4">
